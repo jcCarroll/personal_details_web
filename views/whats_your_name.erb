@@ -1,10 +1,17 @@
-<p class="textcolor">
-	What is your name?
-</p>
-<form method="post" action="/name">
-
-	<input type="text" name="input_name">
-
-	<input type="submit">
-
+<p class="emphasis">What is your name?</p>
+<form method="post" action="/name" name="name_form">
+    <input type="text" name="input_name">
+    <input type="submit">
 </form>
+
+<script type="text/javascript">
+
+        function validateForm(form, box) {
+             var value = document.forms[form][box].value;
+              if (value.length < 3) {
+                  document.getElementById("error").innerHTML = "Try Again but this time enter your name!";
+                  return false;
+              }
+        }
+
+</script>
