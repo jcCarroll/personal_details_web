@@ -1,5 +1,13 @@
+body {
+    background-color:tan;
+}
 .textcolor {
     color:olivedrab;
+}
+.center {
+    display: block;
+    margin: auto;
+    width: 50%;
 }
 li {
     display: inline;
