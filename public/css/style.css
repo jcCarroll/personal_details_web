@@ -4,10 +4,15 @@ body {
 .textcolor {
     color:olivedrab;
 }
-.center {
+.center1 {
     display: block;
     margin: auto;
     width: 50%;
+}
+.center2 {
+    display: block;
+    margin: auto;
+    width: 30%;
 }
 li {
     display: inline;
