@@ -77,5 +77,5 @@ get '/about' do
 end
 
 get '/charleston' do
-	erb :ccharleston
+	erb :charleston
 end
