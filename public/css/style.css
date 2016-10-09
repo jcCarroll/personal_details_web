@@ -25,3 +25,9 @@ ul {
 .textcenter1 {
     text-align: center;
 }
+.textsize {
+    font-size: 2.5rem;
+}
+.paddimg {
+    padding-bottom: 3rem;
+}
