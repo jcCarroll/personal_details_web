@@ -4,12 +4,12 @@ body {
 .textcolor {
     color:olivedrab;
 }
-.center1 {
+.img1 {
     display: block;
     margin: auto;
     width: 50%;
 }
-.center2 {
+.img2 {
     display: block;
     margin: auto;
     width: 30%;
