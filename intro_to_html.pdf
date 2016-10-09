@@ -1,0 +1,211 @@
+Introduction to HTML, CSS, Javascript, and everything that goes with it.
+
+1) Start by making a new folder. Name the folder html_intro.(will be referred to as the main folder or root folder)
+2) Next, inside the folder you just created create a new folder called views.
+3) Inside your main html_intro folder create a new folder named public.
+4) Inside the public folder create 3 new folders named img, js, and css.
+5) Now open your text editor and open the folder you just created, html_intro.
+6) Here you can see all the folders that you just created.
+7) Make a new file, save the file as layout.erb and save it in the views folder. You will create new files in this folder for any pages you want to have on your site. They will be saved as .erb files.(ex. contact.erb or about.erb)
+8) Make another new file and name it app.rb, save it in the main or root folder html_intro. (.rb files stay in the main folder(root).)
+9) At the top of your app.rb you will need to require any gems you will be using. An example of how this will look will be (require 'sinatra') minus the parenthesis. 
+10) Next, you will need to add your routes on the app.rb. It looks like this. 
+         get '/' do
+          erb :index
+        end															You will do this for each page you are going to include on your site.(The erb is what you called the page when you made it and saved it ex erb :contact, or erb :about)
+11.) At the top of your layout.erb you will need to declare the file type <!DOCTYPE html>.
+12.) Next, add a <head> tag. This is where you will link to any css files you will be using. We will come back to this. 
+13.) Now open a <title> tag. Inside the tag you will include the title of your site(ex. Coin Changer) and then close the </title> tag. This will show in the tab of all the pages in your site. For now the same title will show on every page. You will learn how to change this later.
+14.) Now you will close the </head> tag and in the line below the closing tag you will open a <body> tag.
+15.) Under your opening <body> tag you need to add a <%=yield%>. This allows the content of other pages to be displayed. It is telling Sinatra that this part of the page will be filled in from another erb(view).
+16.) Under the <%=yield%> tag you will open a <header> tag. This is where you will place the menu bar and anything you want at the top of every page. We will cover this more in depth as we go on.When you open a tag you should get in the habit of closing it at the same time. This will help you not forget later on. </header> is how you close this tag.
+17.) Now you can start making the menu bar for your site. This is where people will click on links that will take them to the different pages within your site. To start you will make an Unorganized list of links. This is accomplished by opening a <ul> tag. Go ahead and close the </ul> tag as well. In between the two tags you will add your list items. This is done with the <li> tag. Go ahead and close the tag as well </li>. In between the tags you will put what you want the link called. An example would be <li>Home</li> or <li>Contact</li>. Make sure you have closed the </ul> tag if you didn't do so when you opened it.
+18.) Now if you save your work (save all) and run your site by running ruby app.rb(or whatever you called your rb file, we find it easier to always stick with app.rb, it makes it easy for people who may be looking at your code to know which file to run) and go to localhost:4567 in the browser window you can see the starts of your new site. (*If you make a change to the app.rb you must restart Sinatra. To do this press control-c. Then type ruby app.rb again to restart. Making changes on the views or css doesn't require you to restart Sinatra. However, if you notice strange behavior with the way your site looks it never hurts to restart Sinatra.)
+19.) You will see a rough looking menu bar. It will appear as just a list of items and not really a menu bar at all. We will fix this by adding in some basic css.
+20.) To begin with css you need to create a new file in your public, css folder. Name the file custom.css. Here is where you will add everything to make your site awesome. Go to the layout.erb and in the <head> tag you will now link your css as follows				<link rel="stylesheet" href = "css/style.css"> Any css stylesheets you want to include will be linked this way.
+
+21.) When adding things to your css file you can add them as classes, ID, or by using the tag. I will show you an example of each. Classes are used when you will be using the css for more than one time. This can useful for styling text, images, etc. You start a class with a period like so .somecolor {    						                      color:orange; 										} 											This will change the text color of whatever items you add this class to. To add a class to an item you go to the opening tag like this <p class=”somecolor”> This is a simple paragraph tag. The text in this tag will be whatever color you set in the css. (Most browsers will accept the color name or you can use the Hex color code. It will begin with a #.(ex.#ffa500) There are many sites online that will give you colors and codes. One is Css colors.)												To use an ID is css you will start it with the # sign. ID's are usually for css you will use one time. Maybe you want to adjust the size of a certain text. To do so you would go to your tag on your view <p id=”maintextsize”> In the css file it will look like this #maintextsize {										font-size:2.0rem;									}												Only the text in this tag set with the maintextsize id will be changed. If you are going to need this css again for other text on the site just set it as a class.	If you want to style all the paragraphs a different way you and just style the tag. An example would look like this on your css file p{											font-size:2.0rem;									color:blue;										font-weight:bold;										}						Let's say you want to change the color or the text in your footer. To do this on the css page you will use         footer p{											color:orange;										}											This will change the paragraph color in the footer only.
+22.) Ok, so back to styling the menu bar to look like a menu bar. In your css you will want to set the li tag like this. 							                       	li{ 										display:inline; 							padding-right:1.0rem; 						font-size:2.0rem; 									} 											This will place the links side by side instead of stacked on top of each other with the display inline. The padding-right will put some spacing in-between the links. The font-size will make the text bigger.(The rem after the font-size makes the text responsive on mobile devices. This means it will still look good no matter what size screen is used.)Now if you save your work and refresh the browser window you will see a more normal looking menu bar. You may notice the links are pulled to one side. If you prefer them center you can add styling to the ul tag like this on the css file. Here is an example 						       ul{ 			                                                              text-align:center;										 } 									           Once you save and refresh the browser you will see the links centered in the menu bar.
+23.) Let's say you want to change the color of the links in your menu bar. You will need to style the a tag of the list item like so. 							Li a { 								color:purple; 										} 										This will change any list item that is a link to the color you have selected.
+24.) Now you may have noticed you cannot click on the links yet. To fix this go to the layout.erb and find your <li> tags. You will need to change them into links like in the following example. <li><a href = "/">HOME</a></li>, or 
+         <li><a href = "/contact">Contact</a></li>         (whatever you set your get route as in the app.rb is what you will put after the /. If you are directing to the home page you just need to set that to “/')
+25.) Save your work(save all) and refresh the browser. You should now be able to click on the links in the menu bar and be taken to those pages,
+26.) Next, let's add a footer to our site. This is the area at the bottom of the web page. Under the closing </body> tag on the layout.erb you will open a <footer> tag. Go ahead and close it as well </footer>. In between the two footer tags you can add whatever you want to show up in the footer. This is often a copyright, who the site was created by, or maybe contact info. Remember this will appear on every page of the site. (ex. <footer data-role="footer" data-position="fixed">
+       <p><a href = "http://www.minedminds.org"target =              	 "_blank">Mined Minds</a><br>&copy; 2016</p>
+        </footer>)
+
+27.) To style the footer you will do as follows 	footer{ 	                                                    	background-color:#663399;                    	color:#ffffff;											 } 									         If you want to make changes to the footer text here is an example                                                             footer p { 										font-size:1.5rem;											 } 									Now when you save and refresh the browser you will see your footer.	
+28.) Ok, now you have a menu bar and a footer but you need some content for your site. Since you will want different content on each page you will add this to the individual views instead of the layout.erb.
+29.) Perhaps you want a contact page. You will go to the contact.erb to add the content. On the contact page you will often find the address, hours, email, etc of the business the site is about.  Popular option is adding a map to show where the location is as well as making it easy for someone to get driving directions to the location. We will discuss how to add this in the next step.
+30.) Go to Google maps, type in the address of the place you are wanting to display a map of. Then click on the share link. Next, you will click on embed map link. This will bring up the map and allow you to choose what size you want. All you have to do is copy the information in the box hat is highlighted. You will then paste this on the contact.erb where you want the map to show up. (*We have found that placing the map towards the bottom of the page works better for mobile users than placing it at the top. Mobile users seem to become stuck in the map when positioned at top.)
+31.) Now save your work and refresh the browser. When you click on the contact page you will see the map with the address you specified displayed. 
+32.) Maybe you would like to add some images to your pages. This is done with an <img src=”/img/pic.jpg”> tag. After the / you will put the name of your image file. You will want the image file to be saved in the public/img folder you created when we started this tutorial. When it comes to sizing the image for your page you have a couple of options. You can resize the image using a photo editing software.( a good free one is Pic Monkey) You will upload the photo, resize, and then save it to your img folder. The other option is setting the size with css. Here is an example of that. Start by giving your image a class.(ex. <img class=”sizeimage” src=”/img/image.jpg>) Then on your css file you will add the class you just created as follows 	.sizeimage{ 											height: 25rem; 						  			width:25rem;									}											You can try different sizes until you find one you are happy with.
+33.) If you want to have input fields where you get information from site visitors it is fairly simple to do. You will include a form on whatever page you want to collect the info. Here is an example 				 <form class= "formbox" method = "post" action = "/name">
+        <input type = "text" name = "user_name">  
+        <input type = "submit">
+</form>															This a form asking for the visitors name.
+34.) Now you need to send the name throughout your site as a local variable. This is done on the app.rb. Here is an example 									post '/name' do
+        		name = params[:user_name] 
+        		redirect '/pin?users_name=' + name
+		   end													On any page you want to include the name you will pass it through as in the following example							get '/deposit' do								name = params[:name]									erb :deposit, :locals => {:name => name,  :message1 => "Thank You #{name}. How much would you like to deposit today?"}
+end
+
+35.) You can validate that an input filed has been filled in with some javascript. This will send a message telling the visitor that they cannot submit the form until there is an answer. Here is how you do this. You will create a new file in your public/js folder. Name the file formvalidation.js and save it. Add the following lines to the file. 												function validateForm(form,box) {
+  var value = document.forms[form][box].value;
+   if (value.length < 3) {
+       document.getElementById("error").innerHTML = "Try Again but this time enter your name!";
+       return false;
+   }
+} 														
+The javascript function is looking to see that the form has been filled in with at least three characters. If it hasn't there will be an error message displayed telling them to fill in the form.
+
+Go to the layout.erb and under the <head> tag below where you linked the css file you will call your javascript file like this <script type=” text/javascript” src=” js/formvalidation.js></script> This will be done for any javascript files you need to include in your site. 	
+
+On your form you are going to make a few changes as well.
+<form name= "name_form" class= "formbox" onsubmit="return validateForm('name_form','user_name')" method = "post" action = "/name"> 
+        <input type = "text" name = "user_name">  
+        <input type = "submit">
+</form>
+<p id="error" class="h4headline"></p>
+This is the same form we used in the example in step 33. We just made a few changes to make the form work with the javascript file. The code <p id="error" class="h4headline"></p> is  a place for the error to display if the visitor does not fill in the form. The  onsubmit="return validateForm is returning if the form is filled in or not when the submit button is pressed.
+Make sure to save your work, restart Sinatra, and refresh the browser. Now if you try to submit the form without entering anything it will not allow you to procede.
+Examples
+
+Here is an example what an app.rb file might look like.
+require_relative 'coincalculater.rb'
+
+require 'sinatra'
+
+get '/' do
+        erb :introduction
+end
+
+post '/name' do
+        name = params[:user_name] 
+        redirect '/pin?users_name=' + name
+end
+
+get '/pin' do
+        name = params[:users_name].capitalize
+        erb :bankpin, :locals => {:name => name}
+end
+
+
+post '/pin' do
+        pin = params[:pin]
+        name = params[:retrieved_name]
+        redirect '/deposit?name=' + name +"&pin=" + pin
+
+end
+
+get '/deposit' do
+        
+        name = params[:name]
+        pin = params[:pin]
+        erb :deposit, :locals => {:name => name, :pin => pin, :message1 => "Thank You #{name}. How much would you like to deposit today?"}
+end
+
+post '/deposit' do
+        pin = params[:pin]
+    name = params[:name]
+        
+        deposit = params[:deposit]
+        coins = change(deposit.to_i)
+        stuff = hashconverter(coins)
+        # "Thank you #{name}, you have deposited #{stuff}"
+        erb :change_returned, :locals => {:name => name, :pin => pin, :message1 => "Thank you #{name}, you have deposited #{stuff}"}
+end
+
+get '/contact' do
+        @title = 'My British Contact Page'
+        erb :contact
+end
+
+get '/muffin' do
+        @title = 'Sweet Muffins'
+        erb :muffin
+end
+
+get '/rubbish' do
+        @title = 'Full of Rubbish'
+        erb :rubbish
+end
+
+Here is an example of a css file.
+li {
+        display: inline;
+        font-size: 2.0rem;
+        padding-right: 1.5rem;
+}
+li a {
+        color: #1d297b;
+}
+
+ul {
+
+        text-align: center;
+
+}
+
+footer {
+        text-align: center;
+        background-color: #1d297b;
+        color: white;
+}
+footer p {
+        font-size: 2.0rem;
+        
+
+}
+footer a:visited {
+        color: white;
+}
+footer a:link{
+        color: white;
+}
+.jons {
+        height:25rem;
+        /*padding-left: */
+}
+.h4headline{
+        text-align: center;
+}
+.formbox{
+        text-align: center;
+}
+.somecolor {
+        color: orange;
+}
+Here is an example of a layout.erb
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href = "css/style.css">
+
+        <title> <%=@title%></title>
+</head>
+<body>
+        <ul>
+                <li><a href = "/">Home</a></li>
+                <li><a href = "/contact">Contact</a></li>
+                <li><a href = "/rubbish">Rubbish</a></li>
+                <li><a href = "/muffin">Sweet Muffins</a></li>
+        </ul>
+        <%=yield%>
+</body>
+<footer data-role="footer" data-position="fixed">
+<p><a href = "http://www.minedminds.org"target = "_blank">Mined Minds</a><br>&copy; 2016</p>
+
+</footer>
+
+
+
+
+Additional Resources
+Here are some good resources for learning more about HTML and CSS.
+http://www.w3schools.com/html/default.asp 
+http://www.w3schools.com/css/default.asp 
+https://www.codecademy.com/learn/web 
+http://www.htmlgoodies.com/primers/html/article.php/3478131 
+There are also courses on paid sites that can be very beneficial
+https://teamtreehouse.com/library/html 
+www.lynda.com
